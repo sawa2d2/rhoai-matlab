@@ -40,6 +40,10 @@ RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
 # For details: https://blogs.mathworks.com/japan-community/2023/02/03/jp_mathworks-matlab-kernel-for-jupyter-released/?from=jp
 RUN pip3 install jupyter-matlab-proxy
 
+# Clear dnf cache
+RUN dnf clean all \
+ && rm -rf /var/cache/dnf
+
 WORKDIR /opt/app-root/src
 
 # Replace Notebook's launcher, "(ipykernel)" with Python's version 3.x.y
